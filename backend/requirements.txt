@@ -1,0 +1,7 @@
+efficientnet_pytorch==0.7.1
+Flask==3.0.3
+Flask_Cors==4.0.1
+opencv_python==4.10.0.82
+Pillow==10.3.0
+torch==2.3.1+cu118
+torchvision==0.18.1+cu118
