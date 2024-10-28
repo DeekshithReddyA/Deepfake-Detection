@@ -8,6 +8,7 @@ from flask_cors import CORS
 from PIL import Image
 import io
 import cv2
+from waitress import serve
 
 # Initialize Flask app and allow CORS
 app = Flask(__name__)
@@ -117,6 +118,10 @@ def predict():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+env = 'prod'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    if env == 'dev':
+        app.run(host='0.0.0.0', port=5000)
+    else:
+        serve(app , host='0.0.0.0',port=5000)
