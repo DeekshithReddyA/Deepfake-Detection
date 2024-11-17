@@ -24,7 +24,7 @@ const UploadImage = () => {
         formData.append('file', selectedFile);
 
         try {
-            const response = await fetch('/predict', {
+            const response = await fetch('https://deepfake.deekshithreddy.site/predict', {
                 method: 'POST',
                 body: formData,
             });
