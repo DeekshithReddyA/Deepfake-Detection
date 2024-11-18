@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState ,useRef } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const UploadImage = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [prediction, setPrediction] = useState(null);
     const [probabilities, setProbabilities] = useState(null);
+    const hiddenTextAreaRef = useRef(null);
 
     const onDrop = (acceptedFiles) => {
         setSelectedFile(acceptedFiles[0]);
@@ -16,6 +17,17 @@ const UploadImage = () => {
         setSelectedFile(event.target.files[0]);
     };
 
+    const handlePaste = (event) => {
+        const items = event.clipboardData.items;
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            if (item.kind === 'file') {
+                const file = item.getAsFile();
+                setSelectedFile(file);
+                break;
+            }
+        }
+    };
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!selectedFile) return;
@@ -36,8 +48,20 @@ const UploadImage = () => {
         }
     };
 
+    const focusTextArea = () => {
+        if (hiddenTextAreaRef.current) {
+            hiddenTextAreaRef.current.focus();
+        }
+    };
+
     return (
-        <div style={containerStyle}>
+        <div style={containerStyle} onClick={focusTextArea}>
+                <textarea
+                ref={hiddenTextAreaRef}
+                style={hiddenTextAreaStyle}
+                onPaste={handlePaste}
+                aria-hidden="true"
+            />
             <h2>Upload an image or video to check if it's real, a deepfake, or generated</h2>
             <div {...getRootProps({ className: 'dropzone' })} style={dropzoneStyle}>
                 <input {...getInputProps()} />
@@ -46,7 +70,7 @@ const UploadImage = () => {
                 ) : selectedFile ? (
                     <p>{selectedFile.name} selected</p>
                 ) : (
-                    <p>Drag 'n' drop a file here, or click to select a file</p>
+                    <p>Drag 'n' drop a file here, or click to select a file or paste a copied file</p>
                 )}
             </div>
             <div className="container">
@@ -94,6 +118,16 @@ const dropzoneStyle = {
     width: '80%',
     marginLeft: 'auto',
     marginRight: 'auto',
+};
+
+
+
+const hiddenTextAreaStyle = {
+    position: 'absolute',
+    opacity: 0,
+    pointerEvents: 'none',
+    width: 0,
+    height: 0,
 };
 
 export default UploadImage;
