@@ -6,12 +6,10 @@ import Home from './Components/Home';
 import Dataset from './Components/Dataset';
 import Model from './Components/Model';
 import UploadImage from './Components/UploadImage';
-import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
 <>
-<Analytics />
 <Sidebar />
 <Routes>
   <Route path='/' element={<Home />} />
