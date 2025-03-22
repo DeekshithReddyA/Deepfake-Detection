@@ -5,6 +5,7 @@ const UploadImage = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [prediction, setPrediction] = useState(null);
     const [probabilities, setProbabilities] = useState(null);
+    const [visualization, setVisualization] = useState(null);
     const hiddenTextAreaRef = useRef(null);
 
     const onDrop = (acceptedFiles) => {
@@ -36,13 +37,15 @@ const UploadImage = () => {
         formData.append('file', selectedFile);
 
         try {
-            const response = await fetch('https://deepfake.deekshithreddy.site/predict', {
+            const response = await fetch('http://localhost:5000/predict', {
                 method: 'POST',
                 body: formData,
             });
             const data = await response.json();
+            console.log(data);
             setPrediction(data.label);
             setProbabilities(data.probabilities);
+            setVisualization(data.visualization);
         } catch (error) {
             console.error('Error:', error);
         }
@@ -95,6 +98,16 @@ const UploadImage = () => {
                             ))}
                         </div>
             )}
+                                {visualization && (
+                        <div className="visualization-container" style={visualizationContainerStyle}>
+                            <h3>LIME Explanation</h3>
+                            <img 
+                                src={`data:image/png;base64,${visualization}`}
+                                alt="LIME visualization"
+                                style={visualizationImageStyle}
+                            />
+                        </div>
+                    )}
         </div>
     );
 };
@@ -128,6 +141,19 @@ const hiddenTextAreaStyle = {
     pointerEvents: 'none',
     width: 0,
     height: 0,
+};
+
+const visualizationContainerStyle = {
+    marginTop: '30px',
+    padding: '20px',
+};
+
+const visualizationImageStyle = {
+    maxWidth: '100%',
+    height: 'auto',
+    margin: '20px auto',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px',
 };
 
 export default UploadImage;
