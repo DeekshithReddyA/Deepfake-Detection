@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/Navbar";
+import { Clock } from "@/icons/Clock";
 import { Crown } from "@/icons/Crown";
+import { ImageIcon } from "@/icons/Image";
 import { Shield } from "@/icons/Shield";
 import { Upload } from "@/icons/Upload";
 import { Zap } from "@/icons/Zap";
@@ -24,6 +26,48 @@ export default function Home() {
           <div className="flex space-x-4">
             <Button startIcon={<Upload size={20}/>} variant="primary" placeholder="Try it Now"/>
             <Button startIcon={<Zap size={20}/>} variant="secondary" placeholder="Learn More"/>
+          </div>
+          
+          <div className="flex mt-10 space-x-2">
+            <div>
+              <div className="p-4 flex flex-col items-center justify-center border border-neutral-100 shadow-sm md:space-y-2 space-y-1">
+                <div>
+                  <Crown size={24} />
+                </div>
+                <div className="text-xl md:text-3xl font-bold font-sans">
+                  98.8%
+                </div>
+                <div className="font-sans text-center text-neutral-500 text-xs md:text-md">
+                  Accuracy rate
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="py-4 px-2 flex flex-col items-center justify-center border border-neutral-100 shadow-sm md:space-y-2 space-y-1">
+                <div>
+                  <Clock size={24} />
+                </div>
+                <div className="text-xl md:text-3xl font-bold font-sans">
+                  2.3s
+                </div>
+                <div className="font-sans text-center text-neutral-500 text-xs md:text-md">
+                  Average Processing
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="p-4 flex flex-col items-center justify-center border border-neutral-100 shadow-sm md:space-y-2 space-y-1">
+                <div>
+                  <ImageIcon size={24} />
+                </div>
+                <div className="text-xl md:text-3xl font-bold font-sans">
+                  1M+
+                </div>
+                <div className="font-sans text-center text-neutral-500 text-xs md:text-md">
+                  Image Dataset
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
