@@ -20,15 +20,15 @@ export default function Home() {
           <div className="md:w-2/3 font-sans md:text-6xl text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-indigo-700 to-blue-300">
             with Precision
           </div>
-          <div className="md:w-6/7 font-sans md:text-lg text-neutral-500 my-6">
+          <div className="md:w-6/7 text-center md:text-start font-sans md:text-lg text-neutral-500 my-6">
             Upload your image to instantly analyze and detect potential deepfake manipulation using our AI technology powered by EfficientNet.
           </div>
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 md:space-x-6">
             <Button startIcon={<Upload size={20}/>} variant="primary" placeholder="Try it Now"/>
             <Button startIcon={<Zap size={20}/>} variant="secondary" placeholder="Learn More"/>
           </div>
           
-          <div className="flex mt-10 space-x-2">
+          <div className="flex mt-10 space-x-2 md:space-x-6">
             <div>
               <div className="p-4 flex flex-col items-center justify-center border border-neutral-100 shadow-sm md:space-y-2 space-y-1">
                 <div>
