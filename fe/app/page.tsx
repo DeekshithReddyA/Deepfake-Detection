@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/Navbar";
+"use client";
 import { Clock } from "@/icons/Clock";
 import { Crown } from "@/icons/Crown";
 import { ImageIcon } from "@/icons/Image";
@@ -6,8 +6,10 @@ import { Shield } from "@/icons/Shield";
 import { Upload } from "@/icons/Upload";
 import { Zap } from "@/icons/Zap";
 import { Button } from "@/ui/Button";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   const iconStyles = "bg-gray-200 p-2 rounded-full";
   const itemsBoxStyles = "w-2/3 flex flex-col items-center justify-center p-4 border border-neutral-100 shadow-md my-1";
   return (
@@ -24,8 +26,14 @@ export default function Home() {
             Upload your image to instantly analyze and detect potential deepfake manipulation using our AI technology powered by EfficientNet.
           </div>
           <div className="flex space-x-4 md:space-x-6">
-            <Button startIcon={<Upload size={20}/>} variant="primary" placeholder="Try it Now"/>
-            <Button startIcon={<Zap size={20}/>} variant="secondary" placeholder="Learn More"/>
+            <Button onClick={(e) => {
+              e.preventDefault();
+              router.push('/model');
+            }} startIcon={<Upload size={20}/>} variant="primary" placeholder="Try it Now"/>
+            <Button onClick={(e) => {
+              e.preventDefault();
+              router.push('/learn-more');
+            }} startIcon={<Zap size={20}/>} variant="secondary" placeholder="Learn More"/>
           </div>
           
           <div className="flex mt-10 space-x-2 md:space-x-6">

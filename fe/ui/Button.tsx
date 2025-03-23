@@ -10,7 +10,7 @@ export const Button = (props: ButtonProps) => {
         secondary : ""
     }
     return (
-        <div className={`rounded-md cursor-pointer relative overflow-hidden group ${props.variant === "primary" ? ""  : "shadow-sm"}`}>
+        <div onClick={props.onClick} className={`rounded-md cursor-pointer relative overflow-hidden group ${props.variant === "primary" ? ""  : "shadow-sm"}`}>
             <div className={`${hoverStyles[props.variant]}`}></div>
             <div className={`relative px-4 p-2 md:px-6 rounded-md flex items-center justify-center space-x-2 ${buttonStyles[props.variant]}`}>
                 <div>
