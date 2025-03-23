@@ -29,10 +29,10 @@ export default function Model() {
       >
         <div
           className={`${
-            predicted ? "w-sm col-span-1" : "w-lg"
+            predicted ? "w-sm col-span-1" : "ms:w-lg w-sm"
           } h-96 z-10 p-4 flex flex-col border border-neutral-100 rounded-lg shadow-md transition-all duration-500 ease-in-out`}
         >
-          <div className="font-sans font-semibold text-xl m-2">
+          <div className="font-sans font-semibold md:text-xl text-lg m-2">
             Upload Image
           </div>
           <div className="w-full h-5/6 border border-neutral-200 shadow-sm rounded-lg">
@@ -64,7 +64,7 @@ export default function Model() {
             ${
               predicted
                 ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-full md:absolute"
+                : "opacity-0 hidden translate-x-full md:absolute" // Remove hidden for transition but affects the layout. Need to fix
             }
           `}
         >
@@ -82,16 +82,16 @@ export default function Model() {
             <ProgressBar title={"Real"} progress={10}/>
             <ProgressBar title={"Deepfake"} progress={65} />
             <ProgressBar title={"AI Generated"} progress={25} />
-            <div className="flex items-center space-x-1 ml-4 my-2">
+            <div className="flex items-center space-x-1 ml-4 md:my-2 my-6">
                 <ImageIcon size={17}/>
             <div className="text-md font-sans font-semibold">
                 Anomalies
             </div>
             </div>
-            <div className="flex ml-6 space-x-10">
-                <Image className="h-38 w-42 rounded-sm" src={Img1} alt="Image 1"/>
-                <Image className="h-38 w-42 rounded-sm" src={Img1} alt="Image 1"/>
-                <Image className="h-38 w-42 rounded-sm" src={Img1} alt="Image 1"/>
+            <div className="flex ml-6 xl:space-x-10 space-x-2">
+                <Image className="xl:h-38 xl:w-42 h-25 w-25 rounded-sm" src={Img1} alt="Image 1"/>
+                <Image className="xl:h-38 xl:w-42 h-25 w-25 rounded-sm" src={Img1} alt="Image 1"/>
+                <Image className="xl:h-38 xl:w-42 h-25 w-25 rounded-sm" src={Img1} alt="Image 1"/>
             </div>
           </div>
         </div>
