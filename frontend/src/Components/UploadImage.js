@@ -7,7 +7,7 @@ const UploadImage = () => {
     const [probabilities, setProbabilities] = useState(null);
     const [visualization, setVisualization] = useState(null);
     const hiddenTextAreaRef = useRef(null);
-
+    
     const onDrop = (acceptedFiles) => {
         setSelectedFile(acceptedFiles[0]);
     };

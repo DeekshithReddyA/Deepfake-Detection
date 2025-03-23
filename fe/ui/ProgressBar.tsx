@@ -5,7 +5,7 @@ export const ProgressBar = (props: ProgressBarProps) => {
         <div>
                 <div className="flex justify-between">
               <div className="ml-5 font-sans font-semibold text-sm">{props.title}</div>
-              <div className="mr-5 font-sans font-semibold text-sm">{props.progress}%</div>
+              <div className="mr-5 font-sans font-semibold text-sm">{props.progress.toPrecision(3)}%</div>
                 </div>
               <div className="mx-4 relative h-2 overflow-hidden border-2 border-neutral-300 bg-neutral-200 rounded-lg">
                 <div

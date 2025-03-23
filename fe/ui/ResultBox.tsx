@@ -7,7 +7,7 @@ export const ResultBox = (props:ResultBoxProps) => {
     const boxStyles = {
         real : "",
         deepfake: "",
-        generated : ""
+        generated : "",
     }
     const placeholderMap = {
         real : "Real Image",
