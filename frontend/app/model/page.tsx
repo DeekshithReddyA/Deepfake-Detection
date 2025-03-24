@@ -18,7 +18,7 @@ export default function Model() {
     const [prediction, setPrediction] = useState<"real" | "generated" | "deepfake" | null>(null);
     const [probabilities, setProbabilities] = useState<number[]>([]);
     const [visualization, setVisualization] = useState(null);
-    const [backendStatus , setBackendStatus] = useState<boolean>(true);
+    const [backendStatus , setBackendStatus] = useState<boolean>(false);
 
     useEffect(() => {
     const checkBackend = async () => {

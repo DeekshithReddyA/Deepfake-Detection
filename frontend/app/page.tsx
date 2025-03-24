@@ -63,7 +63,7 @@ export default function Home() {
                   <Clock size={24} />
                 </div>
                 <div className="text-xl md:text-3xl font-bold font-sans">
-                  2.3s
+                  9.3s
                 </div>
                 <div className="font-sans text-center text-neutral-500 text-xs md:text-md">
                   Average Processing
