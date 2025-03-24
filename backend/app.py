@@ -20,7 +20,7 @@ matplotlib.use('Agg')  # Required for non-interactive backend
 
 # Initialize Flask app and allow CORS
 app = Flask(__name__)
-CORS(app, origins=["*"])
+CORS(app, origins=["https://deepfake-detector-fe.vercel.app","https://deepfake-detection-fe.vercel.app"])
 
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -160,7 +160,7 @@ def predict_with_explanation():
         return jsonify({'error': str(e)}), 500
     
 env = 'prod'
-port = int(os.environ.get('PORT',5000))
+port = int(os.environ.get('PORT',9000))
 
 if __name__ == '__main__':
     if env == 'dev':
