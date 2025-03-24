@@ -61,7 +61,6 @@ export default function Model() {
                 body: formData,
             });
             const data = await response.json();
-            console.log(data);
             setPrediction(data.label);
             setProbabilities(data.probabilities);
             setVisualization(data.visualization);
@@ -172,7 +171,7 @@ export default function Model() {
       <br></br>
         <div>
           {backendStatus && 
-          <div className="font-medium">🟢 The Backend is up and running. Test out the model by uploading an image.</div>}
+          <div className="font-semibold font-sans text-lg">🟢 The Backend is up and running. Test out the model by uploading an image.</div>}
           {!backendStatus && 
           <div>
           <div className="flex font-sans text-lg font-semibold">🔴 The Backend is currently down. Ping me on
@@ -182,7 +181,7 @@ export default function Model() {
               to get it up and running.</div>
           </div>}
         </div>
-        <div className="font-semibold m-2">Note: The backend is self-hosted since the model is a bit too large for the cloud charges to be inexpensive.
+        <div className="font-semibold font-sans m-2">Note: The backend is self-hosted since the model is a bit too large for the cloud charges to be inexpensive.
         </div>
     </div>
   );
