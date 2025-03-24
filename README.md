@@ -14,12 +14,13 @@ This project focuses on detecting deepfake images and videos, as well as AI-gene
 - **Three-class classification**: Classifies inputs as real, deepfake, or AI-generated.
 - **User-friendly interface**: Drag-and-drop functionality for easy file upload.
 - **Flask backend**: Serves the model and handles predictions.
-- **React frontend**: Provides a user-friendly interface for file upload and displays results.
+- **Next.js frontend**: Provides a user-friendly interface for file upload and displays results.
 
 ## Requirements
 
 ### Backend
 
+- Docker (optional)
 - Python 3.7+
 - Flask
 - Flask-CORS
@@ -31,7 +32,7 @@ This project focuses on detecting deepfake images and videos, as well as AI-gene
 
 - Node.js
 - npm
-- react
+- next
 - react-dropzone
 - react-router-dom
 
@@ -61,11 +62,34 @@ This project focuses on detecting deepfake images and videos, as well as AI-gene
    python app.py
    ```
 
-### Frontend Setup
+   OR
+
+### Backend Setup (Using Docker)
+
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/yourusername/deepfake-detection.git
+   cd deepfake-detection
+   ```
+
+2. **Build and run the Docker container**:
+   ```sh
+   docker build -t deepfake-backend .
+   docker run -p 9000:9000 deepfake-backend
+   ```
+
+3. **Backend will be available at**:
+   ```
+   http://localhost:9000
+   ```
+
+   
+
+### Frontend Setup (Next.js)
 
 1. **Navigate to the frontend directory**:
    ```sh
-   cd ../frontend
+   cd frontend
    ```
 
 2. **Install dependencies**:
@@ -73,9 +97,9 @@ This project focuses on detecting deepfake images and videos, as well as AI-gene
    npm install
    ```
 
-3. **Start the React app**:
+3. **Start the Next.js app**:
    ```sh
-   npm start
+   npm run dev
    ```
 
 ### Directory Structure
@@ -86,35 +110,37 @@ deepfake-detection/
 ├── backend/
 │   ├── app.py
 │   ├── requirements.txt
-│   └── model/  # Contains model files
+│   └── model_epoch_1.pth
 │
 ├── frontend/
+│   ├── app/
+│   ├── components/
 │   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   │   └── UploadImage.js
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── ...
 │   ├── package.json
+│   ├── next.config.js
 │   └── ...
+│
+├── Dockerfile
 │
 └── README.md
 ```
 
 ### Running the Application
 
-1. **Backend**: Start the Flask server.
+1. **Backend**: Start using Docker.
+   ```sh
+   docker run -p 9000:9000 deepfake-backend
+   ```
+   OR 
    ```sh
    cd backend
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    python app.py
    ```
 
-2. **Frontend**: Start the React application.
+2. **Frontend**: Start the Next.js application.
    ```sh
-   cd ../frontend
-   npm start
+   cd frontend
+   npm run dev
    ```
 
 3. **Access the application**: Open your browser and navigate to `http://localhost:3000`.
@@ -132,11 +158,11 @@ The EfficientNet_b3 model was trained on a diverse dataset including real and de
 
 ### Flask Backend
 
-The Flask backend handles the model loading, preprocessing of input files, and prediction. It also includes endpoints to serve the React frontend and manage API requests.
+The Flask backend handles the model loading, preprocessing of input files, and prediction. It also includes endpoints to serve the Next.js frontend and manage API requests.
 
-### React Frontend
+### Next.js Frontend
 
-The React frontend provides a user-friendly interface for uploading files and viewing the classification results. It uses `react-dropzone` for drag-and-drop functionality and communicates with the Flask backend to fetch predictions.
+The Next.js frontend provides a user-friendly interface for uploading files and viewing the classification results. It uses `react-dropzone` for drag-and-drop functionality and communicates with the Flask backend to fetch predictions.
 
 ## Contributions
 
