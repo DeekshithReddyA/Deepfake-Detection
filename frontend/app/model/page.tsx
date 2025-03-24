@@ -175,14 +175,14 @@ export default function Model() {
           <div className="font-medium">🟢 The Backend is up and running. Test out the model by uploading an image.</div>}
           {!backendStatus && 
           <div>
-          <div className="flex font-sans text-lg font-semibold">🔴 The Backend is currently down. Message me on
+          <div className="flex font-sans text-lg font-semibold">🔴 The Backend is currently down. Ping me on
           <a className="mx-2 mt-1" href="www.linkedin.com/in/deekshithreddy1910" target="_blank" rel="noopener noreferrer">
              <Linkedin size={18}/>
           </a>
               to get it up and running.</div>
           </div>}
         </div>
-        <div className="font-semibold m-2">Note: Backend is self-hosted since the model is a bit too large for the cloud charges to be inexpensive.
+        <div className="font-semibold m-2">Note: The backend is self-hosted since the model is a bit too large for the cloud charges to be inexpensive.
         </div>
     </div>
   );
