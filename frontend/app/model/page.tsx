@@ -6,9 +6,10 @@ import { Button } from "@/ui/Button";
 import { ProgressBar } from "@/ui/ProgressBar";
 import { ResultBox } from "@/ui/ResultBox";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImageIcon } from "@/icons/Image";
 import { useDropzone } from "react-dropzone";
+import { Linkedin } from "@/icons/Linkedin";
 
 export default function Model() {
     const [predicted, setPredicted] = useState<boolean>(false);
@@ -17,6 +18,29 @@ export default function Model() {
     const [prediction, setPrediction] = useState<"real" | "generated" | "deepfake" | null>(null);
     const [probabilities, setProbabilities] = useState<number[]>([]);
     const [visualization, setVisualization] = useState(null);
+    const [backendStatus , setBackendStatus] = useState<boolean>(true);
+
+    useEffect(() => {
+    const checkBackend = async () => {
+      try {
+        const response = await fetch("https://deepfake-backend.deekshithreddy.site/health");
+        if (response.ok) {
+          setBackendStatus(true);
+        } else {
+          setBackendStatus(false);
+        }
+      } catch (error) {
+        setBackendStatus(false);
+      }
+    };
+
+    checkBackend(); // Check immediately when the component mounts
+
+    const interval = setInterval(checkBackend, 5000); // Check every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
     
     const onDrop = (acceptedFiles: File[]) => {
         setSelectedFile(acceptedFiles[0]);
@@ -144,6 +168,22 @@ export default function Model() {
           </div>
         </div>
       </div>
+      <br></br>
+      <br></br>
+        <div>
+          {backendStatus && 
+          <div className="font-medium">🟢 The Backend is up and running. Test out the model by uploading an image.</div>}
+          {!backendStatus && 
+          <div>
+          <div className="flex font-sans text-lg font-semibold">🔴 The Backend is currently down. Message me on
+          <a className="mx-2 mt-1" href="www.linkedin.com/in/deekshithreddy1910" target="_blank" rel="noopener noreferrer">
+             <Linkedin size={18}/>
+          </a>
+              to get it up and running.</div>
+          </div>}
+        </div>
+        <div className="font-semibold m-2">Note: Backend is self-hosted since the model is a bit too large for the cloud charges to be inexpensive.
+        </div>
     </div>
   );
 }

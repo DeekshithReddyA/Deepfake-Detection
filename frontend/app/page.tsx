@@ -8,11 +8,13 @@ import { Zap } from "@/icons/Zap";
 import { Button } from "@/ui/Button";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
   const iconStyles = "bg-gray-200 p-2 rounded-full";
   const itemsBoxStyles = "w-2/3 flex flex-col items-center justify-center p-4 border border-neutral-100 shadow-md my-1";
+
   return (
     <div>
       <Head >

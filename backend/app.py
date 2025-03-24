@@ -159,6 +159,10 @@ def predict_with_explanation():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
+@app.route("/health", methods=["GET"])
+def health_check():
+    return jsonify({"status": "online"}), 200
+    
 env = 'prod'
 port = int(os.environ.get('PORT',9000))
 
