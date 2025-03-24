@@ -7,7 +7,6 @@ import { ProgressBar } from "@/ui/ProgressBar";
 import { ResultBox } from "@/ui/ResultBox";
 import Image from "next/image";
 import { useState } from "react";
-import Img1 from "../../public/Image1.png"
 import { ImageIcon } from "@/icons/Image";
 import { useDropzone } from "react-dropzone";
 

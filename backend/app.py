@@ -20,7 +20,7 @@ matplotlib.use('Agg')  # Required for non-interactive backend
 
 # Initialize Flask app and allow CORS
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["*"])
 
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

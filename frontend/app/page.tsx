@@ -6,6 +6,7 @@ import { Shield } from "@/icons/Shield";
 import { Upload } from "@/icons/Upload";
 import { Zap } from "@/icons/Zap";
 import { Button } from "@/ui/Button";
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -14,6 +15,10 @@ export default function Home() {
   const itemsBoxStyles = "w-2/3 flex flex-col items-center justify-center p-4 border border-neutral-100 shadow-md my-1";
   return (
     <div>
+      <Head >
+        <title>Deepfake Detector</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
       <div className="grid md:grid-cols-2 grid-cols-1">
         <div className="flex flex-col items-center md:items-start md:m-14 m-8">
           <div className="font-sans md:text-6xl font-bold text-4xl mb-2">
