@@ -20,7 +20,7 @@ matplotlib.use('Agg')  # Required for non-interactive backend
 
 # Initialize Flask app and allow CORS
 app = Flask(__name__)
-CORS(app, origins=["https://deepfake-detector-fe.vercel.app","https://deepfake-detection-fe.vercel.app"])
+CORS(app, origins=["https://deepfake-detector-fe.vercel.app","https://deepfake-detection-fe.vercel.app", "http://localhost:3000" , "http://192.168.1.102:3000"])
 
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -74,8 +74,9 @@ def predict_image_with_lime(image_bytes):
 
     # Create LIME explainer
     explainer = lime_image.LimeImageExplainer()
+    resized_image = original_image.resize((224, 224))  # Resize before LIME
     explanation = explainer.explain_instance(
-        np.array(original_image),
+        np.array(resized_image),
         predict_fn,
         top_labels=3,
         hide_color=0,
@@ -102,7 +103,7 @@ def predict_image_with_lime(image_bytes):
     
     # Original image
     plt.subplot(1, 3, 1)
-    plt.imshow(original_image)
+    plt.imshow(resized_image)
     plt.title('Original Image')
     plt.axis('off')
     
@@ -114,7 +115,7 @@ def predict_image_with_lime(image_bytes):
     
     # Bounding boxes
     plt.subplot(1, 3, 3)
-    img_with_boxes = np.array(original_image.copy())
+    img_with_boxes = np.array(resized_image.copy())
     for cnt in contours:
         x, y, w, h = cv2.boundingRect(cnt)
         cv2.rectangle(img_with_boxes, (x, y), (x + w, y + h), box_color, 2)
