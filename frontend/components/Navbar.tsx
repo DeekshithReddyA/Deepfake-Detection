@@ -8,7 +8,10 @@ export const Navbar = () => {
     const navbarItemsStyles = "text-xs md:text-base font-semibold text-center cursor-pointer hover:scale-[1.05] transition ease-in-out duration-300"
     return(<div className="h-15 bg-transparent">
         <div className="flex justify-between">
-            <div className="flex p-1 justify-between items-center mt-1 md:ml-10 md:mt-3">
+            <div onClick={(e) => {
+                e.preventDefault();
+                router.push('/')
+            }} className="flex p-1 justify-between items-center mt-1 md:ml-10 md:mt-3 cursor-pointer">
                 <div className="m-2">
                     <Shield size={24}/>
                 </div>
